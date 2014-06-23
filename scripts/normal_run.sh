@@ -1,6 +1,6 @@
 pre_start_action() {
   # Cleanup previous sockets
-  rm -f /var/lib/mysql/mysql.sock
+  rm -f /data/mysql.sock
 }
 
 post_start_action() {
