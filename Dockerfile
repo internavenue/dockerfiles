@@ -38,7 +38,7 @@ RUN chkconfig --level 345 sshd on
 # Configure the database to use our data dir.
 RUN sed -i -e 's/^datadir\s*=.*/datadir = \/data/' /etc/my.cnf
 
-# Configure MariaDB to listen on any address.
+# Configure Percona to listen on any address.
 RUN sed -i -e 's/^bind-address/#bind-address/' /etc/my.cnf
 
 EXPOSE 3306 22
@@ -47,15 +47,8 @@ ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 RUN touch /firstrun
 
-#RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key && ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
+# Change the root password. The password should be changed and/or managed via Puppet.
 RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && echo 'root:Ch4ng3M3' | chpasswd
-
-#RUN echo "GRANT USAGE ON *.* TO iasales@localhost IDENTIFIED BY 'SalesTeamRulez'" | mysql
-#RUN echo "GRANT USAGE ON *.* TO 'iasales'@'192.168.100.0/255.255.255.0' IDENTIFIED BY 'SalesTeamRulez'" | mysql
-#RUN echo "GRANT USAGE ON *.* TO 'iasales'@'192.168.101.0/255.255.255.0' IDENTIFIED BY 'SalesTeamRulez'" | mysql
-#RUN echo "GRANT ALL PRIVILEGES ON iasales.* TO 'iasales'@'localhost'" | mysql
-#RUN echo "GRANT ALL PRIVILEGES ON iasales.* TO 'iasales'@'192.168.100.0/255.255.255.0'" | mysql
-#RUN echo "GRANT ALL PRIVILEGES ON iasales.* TO 'iasales'@'192.168.101.0/255.255.255.0'" | mysql
 
 # Expose our data, log, and configuration directories.
 VOLUME ["/data", "/var/log/mysql"]
