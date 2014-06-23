@@ -29,6 +29,8 @@ RUN yum clean all
 
 # Percona does not come with default config file.
 ADD etc/my.cnf /etc/my.cnf
+ADD etc/percona.init.sh /etc/init.d/percona
+RUN chmod +x /etc/init.d/percona
 
 # Start MySQL and SSHd by default.
 RUN chkconfig --level 345 mysql on
