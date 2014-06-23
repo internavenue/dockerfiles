@@ -1,4 +1,4 @@
-# docker-percona
+# docker-centos-percona
 
 A Dockerfile that produces a  Centos-based Docker image that will run the latest stable [Percona][percona].
 
