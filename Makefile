@@ -8,8 +8,8 @@ PASS:=Whatz03v3r
 DATA_DIR:=/srv/docker/lon-dev-db1
 PORT:=127.0.0.1:3306
 
-RUNNING:=$(shell docker ps | grep $(NAME) | cut -f 1 -d ' ')
-ALL:=$(shell docker ps -a | grep $(NAME) | cut -f 1 -d ' ')
+RUNNING:=$(shell docker ps | grep $(CONTAINER_NAME) | cut -f 1 -d ' ')
+ALL:=$(shell docker ps -a | grep $(CONTAINER_NAME) | cut -f 1 -d ' ')
 DOCKER_RUN_COMMON=--name="$(CONTAINER_NAME)" -p $(PORT):3306 -v $(DATA_DIR):/data -e USER="$(USER)" -e PASS="$(PASS)" $(DOCKER_USER)/centos-percona
 
 all: build
