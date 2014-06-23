@@ -19,6 +19,18 @@ change this to use your own username.
 $ docker build -t="internavenue/centos-percona" .
 ```
 
+Alternately, you can run the following if you have *GNU Make* installed...
+
+```
+$ make
+```
+
+You can also specify a custom docker username like so:
+
+```
+$ make DOCKER_USER=internavenue
+```
+
 ## Container Creation / Running
 
 The Percona server is configured to store data in `/data` inside the container.
@@ -40,8 +52,25 @@ $ docker run -d -name="percona1" \
              -p 127.0.0.1:3306:3306 \
              -v /srv/docker/lon-dev-db1:/data \
              -e USER="super" \
-             -e PASS="Watz03v3r" \
+             -e PASS="Whatz03v3r" \
              internavenue/centos-percona
+```
+
+Alternately, you can run the following if you have *GNU Make* installed...
+
+``` shell
+$ make run
+```
+
+You can also specify a custom port to bind to on the host, a custom data
+directory, and the superuser username and password on the host like so:
+
+``` shell
+$ sudo mkdir -p /srv/docker/lon-dev-db1
+$ make run PORT=127.0.0.1:3306 \
+           DATA_DIR=/srv/docker/lon-dev-db1 \
+           USER=super \
+           PASS=Whatz03v3r
 ```
 
 ## Connecting to the Database
@@ -61,7 +90,7 @@ password for the superuser.  To view the login in run `docker logs
 ``` shell
 $ docker logs percona1
 PERCONA_USER=super
-PERCONA_PASS=Watz03v3r
+PERCONA_PASS=Whatz03v3r
 PERCONA_DATA_DIR=/data
 Starting Percona MySQL...
 140623 12:31:49 mysqld_safe Logging to '/data/mysql.log'.
@@ -72,5 +101,5 @@ Then you can connect to the Percona server from the host with the following
 command:
 
 ``` shell
-$ mysql -u super --password=Watz03v3r --protocol=tcp
+$ mysql -u super --password=Whatz03v3r --protocol=tcp
 ```
