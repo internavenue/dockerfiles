@@ -15,6 +15,7 @@ RUN yum -y install \
   Percona-Server-client-56 \
   Percona-Server-server-56 \
   Percona-Server-shared-56 \
+  percona-xtrabackup \
   openssh-client \
   openssh-server \
   puppet \
