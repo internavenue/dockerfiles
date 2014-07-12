@@ -9,7 +9,7 @@ The build is based on [internavenue/docker-centos-nginx][docker-centos-nginx].
 
 ## Included packages (and their dependencies)
 
-The 
+The PHP packages are pulled from [Remi Collet][remi]'s excellent RPM repo.
 
 * PHP 5.5.x and its extensions: php-gd, php-ldap, php-mbstring, php-mcrypt, php-mysqlnd, php-pdo, php-pear, php-pecl-apc, php-pecl-imagick, php-soap, php-xml
 * PHP-FPM
@@ -26,6 +26,7 @@ The
 
 [puppet]: http://puppetlabs.com/puppet
 [tmux]: http://en.wikipedia.org/wiki/Tmux
+[remi]: http://rpms.famillecollet.com/
 
 ## Image Creation
 
