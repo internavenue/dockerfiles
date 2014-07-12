@@ -30,6 +30,7 @@ RUN yum clean all
 # Replace the stock config with a nicer one.
 RUN rm -rf /etc/nginx
 ADD etc/nginx /etc/nginx
+RUN mkdir /etc/nginx/conf
 RUN sed -ri 's/user www www;/user nginx nginx;\n\n# Run Nginx in the foreground for Docker.\ndaemon off;/g' /etc/nginx/nginx.conf
 RUN sed -ri 's/logs\/error.log/\/var\/log\/nginx\/error.log/g' /etc/nginx/nginx.conf
 RUN sed -ri 's/logs\/access.log/\/var\/log\/nginx\/access.log/g' /etc/nginx/nginx.conf
