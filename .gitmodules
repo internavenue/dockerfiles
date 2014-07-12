@@ -1,4 +1,4 @@
-[submodule "nginx"]
+[submodule "etc/nginx"]
   ignore = dirty
-  path = nginx
+  path = etc/nginx
   url = git@github.com:h5bp/server-configs-nginx.git
