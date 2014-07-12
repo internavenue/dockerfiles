@@ -11,7 +11,7 @@ PORT:=127.0.0.1:80
 
 RUNNING:=$(shell docker ps | grep $(CONTAINER_NAME) | cut -f 1 -d ' ')
 ALL:=$(shell docker ps -a | grep $(CONTAINER_NAME) | cut -f 1 -d ' ')
-DOCKER_RUN_COMMON=--name="$(CONTAINER_NAME)" -p $(PORT):80 -v $(DATA_DIR):/data -e USER="$(USER)" -e PASS="$(PASS)" $(DOCKER_USER)/$(DOCKER_REPO_NAME)
+DOCKER_RUN_COMMON=--name="$(CONTAINER_NAME)" -p $(PORT):80 -v $(DATA_DIR):/srv/www -e USER="$(USER)" -e PASS="$(PASS)" $(DOCKER_USER)/$(DOCKER_REPO_NAME)
 
 all: build
 
