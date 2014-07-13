@@ -37,7 +37,7 @@ The Percona server is configured to store data in `/data` inside the container.
 You can map the container's `/data` volume to a volume on the host so the data
 becomes independant of the running container.
 
-This example uses `/srv/docker/lon-dev-db1` to store the MariaDB data, but you can modify
+This example uses `/srv/docker/lon-dev-db1` to store the Percona data, but you can modify
 this to your needs.
 
 When the container runs, it creates a superuser with a random password.  You
@@ -83,8 +83,9 @@ following (Fedora 20):
 $ sudo yum install mariadb
 ```
 
-As part of the startup for MariaDB, the container will generate a random
-password for the superuser.  To view the login in run `docker logs
+As part of the startup for Percona Server, the container will set a password for the superuser. 
+This password could be random, but until the tools have not been developed, it makes tough
+to link the container. To view the login in run `docker logs
 <container_name>` like so:
 
 ``` shell
