@@ -8,10 +8,11 @@ DATA_DIR=/srv/www
 LOG_DIR=/var/log
   
 # Check if the data directory does not exist.
-if [ ! -d "$LOG_DIR/mysql" ]; then
-  mkdir -p "$LOG_DIR/mysql"
-  chown nginx:nginx "$LOG_DIR/mysql"
+if [ ! -d "$LOG_DIR/nginx" ]; then
+  mkdir -p "$LOG_DIR/nginx"
 fi
+
+chown -R nginx:nginx "$LOG_DIR/nginx"
 
 service sshd start
 
