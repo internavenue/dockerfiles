@@ -4,6 +4,8 @@ A Dockerfile that produces a CentOS-based Docker image that will run the latest 
 
 It is ideal to be a base image to serve out [PHP-FPM][phpfpm] or as a [Puppet Master][puppet] load balancer.
 
+The build is based on [internavenue/docker-centos-base][docker-centos-base].
+
 [nginx]: http://nginx.org/
 [phpfpm]: http://php-fpm.org/
 [puppet]: http://puppetlabs.com/puppet
@@ -11,13 +13,9 @@ It is ideal to be a base image to serve out [PHP-FPM][phpfpm] or as a [Puppet Ma
 ## Included packages (and their dependencies)
 
 * Nginx
-* Puppet
-* TMux
-* Screen 
-* VIM (Enhanced)
-* Midnight Commander
-* OpenSSH client and server
-* PWgen
+* [H5BP Nginx boilerplate][h5bp]
+
+[h5bp]: https://github.com/h5bp/server-configs-nginx
 
 ## Image Creation
 
