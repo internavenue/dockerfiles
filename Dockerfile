@@ -37,7 +37,6 @@ RUN sed -ri 's/logs\/access.log/\/var\/log\/nginx\/access.log/g' /etc/nginx/ngin
 RUN sed -ri 's/logs\/static.log/\/var\/log\/nginx\/static.log/g' /etc/nginx/h5bp/location/expires.conf
 
 # Don't run Nginx as a daemon. This lets the docker host monitor the process.
-daemon off;
 RUN ln -s /etc/nginx/sites-available/no-default /etc/nginx/sites-enabled
 
 # Start Nginx and SSHd default.
@@ -53,7 +52,7 @@ RUN chmod +x /scripts/start.sh
 RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && echo 'root:Ch4ng3M3' | chpasswd
 
 # Expose our web root and log directories log.
-VOLUME ["/srv/www", "/var/log/nginx"]
+VOLUME ["/srv/www", "/var/log"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
