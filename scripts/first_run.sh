@@ -9,7 +9,12 @@ pre_start_action() {
 
   # Check if the data directory does not exist.
   if [ ! -d "$DATA_DIR" ]; then
-    mkdir /data
+    mkdir -p $DATA_DIR
+  fi
+  
+  # Check if the data directory does not exist.
+  if [ ! -d "$LOG_DIR/mysql" ]; then
+    mkdir -p "$LOG_DIR/mysql"
   fi
 
   # test if DATA_DIR has content
@@ -21,7 +26,7 @@ pre_start_action() {
 
   # Ensure mysql owns the DATA_DIR
   chown -R mysql:mysql $DATA_DIR
-  chown -R mysql:mysql /var/log/mysql
+  chown -R mysql:mysql $LOG_DIR
 }
 
 post_start_action() {

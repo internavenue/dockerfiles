@@ -54,7 +54,7 @@ RUN touch /first_run
 RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && echo 'root:Ch4ng3M3' | chpasswd
 
 # Expose our data, log, and configuration directories.
-VOLUME ["/data", "/var/log/mysql"]
+VOLUME ["/data", "/var/log"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]

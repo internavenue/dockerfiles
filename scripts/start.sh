@@ -5,6 +5,7 @@
 set -e
 
 DATA_DIR=/data
+LOG_DIR=/var/log
 
 if [[ -e /first_run ]]; then
   source /scripts/first_run.sh
@@ -24,6 +25,9 @@ wait_for_mysql_and_run_post_start_action() {
 pre_start_action
 
 wait_for_mysql_and_run_post_start_action &
+
+echo "Starting SSHd"
+service sshd start
 
 echo "Starting Percona MySQL..."
 exec /etc/init.d/percona start
