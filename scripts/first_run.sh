@@ -27,7 +27,7 @@ pre_start_action() {
   bin/config set mysql.port $MYSQL_PORT_3306_TCP_PORT
   bin/config set mysql.user $MYSQL_ENV_USER
   bin/config set mysql.pass $MYSQL_ENV_PASS
-  bin/storage upgrade
+  bin/storage upgrade --force
   bin/phd start
 
   chown -R nginx:nginx /srv/www/phabricator
