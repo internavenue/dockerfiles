@@ -2,10 +2,10 @@
 DOCKER_USER=internavenue
 
 # Change this to suit your needs.
-CONTAINER_NAME:=lon-dev-db1
+CONTAINER_NAME:=lon-dev-db
 USER:=super
 PASS:=Whatz03v3r
-DATA_DIR:=/srv/docker/lon-dev-db1
+DATA_DIR:=/srv/docker/lon-dev-db
 PORT:=127.0.0.1:3306
 
 RUNNING:=$(shell docker ps | grep $(CONTAINER_NAME) | cut -f 1 -d ' ')
