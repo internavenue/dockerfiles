@@ -4,6 +4,9 @@
 # Stop on error
 set -e
 
+DATA_DIR=/srv/www/phabricator
+LOG_DIR=/var/log
+
 if [[ -e /first_run ]]; then
   source /scripts/first_run.sh
 else
@@ -13,7 +16,11 @@ fi
 pre_start_action
 post_start_action
 
+echo "Starting SSHd"
+service sshd start
+
 echo "Starting PHP-FPM..."
 service php-fpm start
+
 echo "Starting Nginx..."
 /usr/sbin/nginx

@@ -1,21 +1,24 @@
 pre_start_action() {
-  cd /srv/www/phabricator
+  mkdir -p $DATA_DIR
+  mkdir -p "$LOG_DIR/nginx"
 
-  if [[ ! "$(ls -A libphutil)" ]]; then
+  cd $DATA_DIR
+  
+  if [ ! -d libphutil ]; then
     echo "Cloning libphutil..."
     git clone https://github.com/facebook/libphutil.git
   else
     echo "The directory of libphutil is not empty. Left as is."
   fi
 
-  if [[ ! "$(ls -A libphutil)" ]]; then
+  if [ ! -d arcanist ]; then
     echo "Cloning Arcanist..."
     git clone https://github.com/facebook/arcanist.git
   else
     echo "The directory of Arcanist is not empty. Left as is."
   fi
 
-  if [[ ! "$(ls -A libphutil)" ]]; then
+  if [ ! -d phabricator ]; then
     echo "Cloning Phabricator..."
     git clone https://github.com/facebook/phabricator.git
   else
@@ -30,8 +33,8 @@ pre_start_action() {
   bin/storage upgrade --force
   bin/phd start
 
-  chown -R nginx:nginx /srv/www/phabricator
-  chown -R nginx:nginx /var/log/nginx
+  chown -R nginx:nginx $DATA_DIR
+  chown -R nginx:nginx "$LOG_DIR/nginx"
 
   mkdir -p /var/log/php-fpm
 }

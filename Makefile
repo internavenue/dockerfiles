@@ -20,7 +20,7 @@ DB_ALL:=$(shell docker ps -a | grep "$(DB_CONTAINER_NAME) " | cut -f 1 -d ' ')
 
 DB_DOCKER_RUN_COMMON=--name="$(DB_CONTAINER_NAME)" -p $(DB_PORT):3306 -p $(DB_SSH_PORT):22 \
 	-v $(DB_DATA_DIR):/data \
-	-v $(DB_LOGS_DIR):/var/log/mysql \
+	-v $(DB_LOGS_DIR):/var/log \
 	-e USER="$(DB_USER)" -e PASS="$(DB_PASS)" $(DB_DOCKER_USER)/$(DB_DOCKER_REPO_NAME)
 
 
@@ -68,6 +68,8 @@ db_bash: clean
 db_run: db_clean
 	mkdir -p $(DB_DATA_DIR)
 	docker run -d $(DB_DOCKER_RUN_COMMON)
+	# FIXME: at this stage we don't know that the access has been granted.
+	sleep 5
 
 run: db_run ph_run
 
