@@ -29,7 +29,7 @@ RUN yum clean all
 # Start Nginx and SSHd default.
 RUN chkconfig --level 345 php-fpm on
 
-RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
+RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php.ini
 ADD etc/fastcgi_params.conf /etc/nginx/conf/fastcgi_params.conf
 RUN mv /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.default
 ADD etc/www.conf /etc/php-fpm.d/www.conf
