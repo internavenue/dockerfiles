@@ -7,7 +7,7 @@ ADD etc/nginx.repo /etc/yum.repos.d/nginx.repo
 
 # Install base stuff.
 RUN yum -y install \
-  nginx \
+  nginx 
 
 # Clean up YUM when done.
 RUN yum clean all
