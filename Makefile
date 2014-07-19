@@ -50,6 +50,8 @@ PH_DOCKER_RUN_COMMON=--name="$(PH_CONTAINER_NAME)" -p $(PH_PORT):80 \
 
 all: build
 
+clean: db_clean ph_clean
+
 build:
 	docker build -t="$(PH_DOCKER_USER)/$(PH_DOCKER_REPO_NAME)" .
 
