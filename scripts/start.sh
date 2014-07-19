@@ -13,9 +13,7 @@ if [ ! -d "$LOG_DIR/mysql" ]; then
   chown nginx:nginx "$LOG_DIR/mysql"
 fi
 
-# echo Starting SSHd
 service sshd start
 
-# Start Nginx
 echo "Starting Nginx..."
 /usr/sbin/nginx

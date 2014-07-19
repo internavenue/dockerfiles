@@ -1,31 +1,18 @@
-FROM tianon/centos:6.5
-MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
+FROM internavenue/centos-base
 
-# Install EPEL
-RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-RUN rpm -Uvh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-10.noarch.rpm
+MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # Install the Nginx.org CentOS repo.
 ADD etc/nginx.repo /etc/yum.repos.d/nginx.repo
 
 # Install base stuff.
 RUN yum -y install \
-  bash-completion \
   nginx \
-  pwgen \
-  mc \
-  openssh-client \
-  openssh-server \
-  puppet \
-  vim-enhanced \
-  tmux \
-  screen \
-  yum-plugin-fastestmirror 
-
-RUN mkdir /srv/www
 
 # Clean up YUM when done.
 RUN yum clean all
+
+RUN mkdir /srv/www
 
 # Replace the stock config with a nicer one.
 RUN rm -rf /etc/nginx
@@ -38,10 +25,6 @@ RUN sed -ri 's/logs\/static.log/\/var\/log\/nginx\/static.log/g' /etc/nginx/h5bp
 
 # Don't run Nginx as a daemon. This lets the docker host monitor the process.
 RUN ln -s /etc/nginx/sites-available/no-default /etc/nginx/sites-enabled
-
-# Start Nginx and SSHd default.
-RUN chkconfig --level 345 sshd on
-RUN chkconfig --level 345 nginx on
 
 EXPOSE 80 22
 
