@@ -20,4 +20,6 @@ chown jenkins:jenkins $DATA_DIR
 chown jenkins:jenkins "$LOG_DIR/jenkins"
 
 service sshd start
+
+echo "Starting Jenkins..."
 service jenkins start
