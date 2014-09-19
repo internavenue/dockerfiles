@@ -1,4 +1,4 @@
-FROM tianon/centos:6.5
+FROM centos:centos7
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # Create and configure Vagrant user
@@ -6,9 +6,9 @@ RUN useradd --create-home -G wheel -s/bin/bash vagrant
 WORKDIR /home/vagrant
 
 # Install EPEL repo.
-RUN yum -y install http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+RUN yum -y install http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-1.noarch.rpm
 # Install Puppet repo.
-RUN yum -y install http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-10.noarch.rpm
+RUN yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
 
 RUN yum -y upgrade
 

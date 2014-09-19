@@ -1,6 +1,6 @@
 # docker-centos-base
 
-A Dockerfile that produces a CentOS-based Docker base image.
+A Dockerfile that produces a Vagrant-ready, CentOS-based Docker base image.
 
 ## Included packages (and their dependencies)
 
@@ -8,7 +8,8 @@ A Dockerfile that produces a CentOS-based Docker base image.
 * OpenSSH client and server
 * PWgen
 * Puppet
-* Screen 
+* Screen
+* Sudo
 * Syslog-ng
 * TMux
 * VIM (Enhanced)
