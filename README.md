@@ -1,14 +1,15 @@
 # docker-centos-base
 
-A Dockerfile that produces a CentOS-based Docker base image.
+A Dockerfile that produces a Vagrant-compilant, CentOS-based Docker base image.
 
 ## Included packages (and their dependencies)
 
 * Midnight Commander
-* OpenSSH client and server
+* OpenSSH clients and server
 * PWgen
 * Puppet
-* Screen 
+* Screen
+* Sudo
 * Syslog-ng
 * TMux
 * VIM (Enhanced)
