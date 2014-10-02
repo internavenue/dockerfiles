@@ -54,8 +54,11 @@ RUN chmod 440 /etc/sudoers
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 
+RUN echo "UseDNS no" >> /etc/ssh/sshd_config
+RUN sed -i 's/UsePrivilegeSeparation sandbox/UsePrivilegeSeparation no/' /etc/ssh/sshd_config
+
 # Change the root password. The password should be changed and/or managed via Puppet.
-RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && echo 'root:Ch4ng3M3' | chpasswd
+RUN echo 'root:Ch4ng3M3' | chpasswd
 
 # Expose our web root and log directories log.
 VOLUME ["/vagrant", "/var/log"]
