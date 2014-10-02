@@ -6,7 +6,7 @@ RUN useradd --create-home -G wheel -s/bin/bash vagrant
 WORKDIR /home/vagrant
 
 # Install EPEL repo.
-RUN yum -y install http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-1.noarch.rpm
+RUN yum -y install http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 # Install Puppet repo.
 RUN yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
 
