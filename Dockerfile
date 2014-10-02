@@ -53,7 +53,7 @@ RUN chmod 440 /etc/sudoers
 
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
-
+RUN touch /first_run
 RUN echo "UseDNS no" >> /etc/ssh/sshd_config
 RUN sed -i 's/UsePrivilegeSeparation sandbox/UsePrivilegeSeparation no/' /etc/ssh/sshd_config
 

@@ -9,7 +9,7 @@ VAGRANT_DIR:=/srv/docker/lon-dev-app1/vagrant
 
 RUNNING:=$(shell docker ps | grep "$(CONTAINER_NAME) " | cut -f 1 -d ' ')
 ALL:=$(shell docker ps -a | grep "$(CONTAINER_NAME) " | cut -f 1 -d ' ')
-DOCKER_RUN_COMMON=--name="$(CONTAINER_NAME)" -P -v $(LOG_DIR):/var/log -v $(VAGRANT_DIR):/vagrant $(DOCKER_USER)/$(DOCKER_REPO_NAME)
+DOCKER_RUN_COMMON=--privileged=true --name="$(CONTAINER_NAME)" -P -v $(LOG_DIR):/var/log -v $(VAGRANT_DIR):/vagrant $(DOCKER_USER)/$(DOCKER_REPO_NAME)
 
 all: build
 
