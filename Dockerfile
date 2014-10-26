@@ -1,4 +1,4 @@
-FROM internavenue/centos-base:centos6
+FROM internavenue/centos-percona:centos6
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # Install EPEL
@@ -36,7 +36,7 @@ EXPOSE 3306 22
 
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
-RUN touch /first_run
+RUN touch /firstrun
 
 # Change the root password. The password should be changed and/or managed via Puppet.
 RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && echo 'root:Ch4ng3M3' | chpasswd
