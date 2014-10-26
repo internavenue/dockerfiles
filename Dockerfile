@@ -1,4 +1,4 @@
-FROM internavenue/centos-percona:centos7
+FROM internavenue/centos-base:centos7
 MAINTAINER Intern Avenue Dev Team2 <dev@internavenue.com>
 
 # Install EPEL
@@ -6,6 +6,7 @@ RUN rpm -Uvh http://www.percona.com/downloads/percona-release/percona-release-0.
 
 # Install base stuff.
 RUN yum -y install \
+  hostname \
   Percona-Server-client-56 \
   Percona-Server-server-56 \
   Percona-Server-shared-56 \
