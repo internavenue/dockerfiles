@@ -1,4 +1,4 @@
-FROM internavenue/centos-base:centos7
+FROM internavenue/centos-base:centos6
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # Install EPEL
