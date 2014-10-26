@@ -26,8 +26,11 @@ pre_start_action
 
 wait_for_mysql_and_run_post_start_action &
 
-echo "Starting SSHd"
-service sshd start
+echo "Starting Syslog-ng..."
+syslog-ng --no-caps
+
+echo "Starting SSHd..."
+/usr/sbin/sshd
 
 echo "Starting Percona MySQL..."
 exec /etc/init.d/percona start

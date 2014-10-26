@@ -27,6 +27,9 @@ pre_start_action() {
   # Ensure mysql owns the DATA_DIR
   chown -R mysql:mysql $DATA_DIR
   chown -R mysql:mysql $LOG_DIR
+
+  # Generate SSH-key
+  /usr/bin/ssh-keygen -A
 }
 
 post_start_action() {
