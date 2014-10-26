@@ -50,7 +50,9 @@ percona1`.
 $ mkdir -p /srv/docker/lon-dev-db1
 $ docker run -d -name="percona1" \
              -p 127.0.0.1:3306:3306 \
-             -v /srv/docker/lon-dev-db1:/data \
+             -v /srv/docker/lon-dev-db1/data:/data \
+             -v /srv/docker/lon-dev-db1/run:/run \
+             -v /srv/docker/lon-dev-db1/log:/var/log \
              -e USER="super" \
              -e PASS="Whatz03v3r" \
              internavenue/centos-percona
