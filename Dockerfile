@@ -1,29 +1,17 @@
-FROM tianon/centos:6.5
+FROM internavenue/centos-base:centos6
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # Install EPEL
-RUN rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
-RUN rpm -Uvh http://yum.puppetlabs.com/el/6/products/x86_64/puppetlabs-release-6-10.noarch.rpm
 RUN rpm -Uvh http://www.percona.com/downloads/percona-release/percona-release-0.0-1.x86_64.rpm
 
 # Install base stuff.
 RUN yum -y install \
-	bash-completion \
   inotify-tools \
-  pwgen \
-  mc \
   Percona-Server-client-56 \
   Percona-Server-server-56 \
   Percona-Server-shared-56 \
   percona-xtrabackup \
-  openssh-client \
-  openssh-server \
-  puppet \
-	vim-enhanced \
-	tmux \
-  screen \
-	unzip \
-	yum-plugin-fastestmirror 
+  unzip 
 
 # Clean up YUM when done.
 RUN yum clean all
