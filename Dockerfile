@@ -21,11 +21,6 @@ ADD etc/my.cnf /etc/my.cnf
 ADD etc/percona.init.sh /etc/init.d/percona
 RUN chmod +x /etc/init.d/percona
 
-# Start MySQL and SSHd by default.
-RUN chkconfig --level 345 mysql on
-RUN chkconfig --level 345 sshd on
-#RUN /etc/init.d/mysql start
-
 # Configure the database to use our data dir.
 RUN sed -i -e 's/^datadir\s*=.*/datadir = \/data/' /etc/my.cnf
 
@@ -42,7 +37,7 @@ RUN touch /firstrun
 RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && echo 'root:Ch4ng3M3' | chpasswd
 
 # Expose our data, log, and configuration directories.
-VOLUME ["/data", "/var/log", "/run"]
+VOLUME ["/vagrant", "/data", "/var/log", "/run"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
