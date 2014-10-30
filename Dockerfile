@@ -18,8 +18,8 @@ RUN yum clean all
 
 # Percona does not come with default config file.
 ADD etc/my.cnf /etc/my.cnf
-ADD etc/percona.init.sh /etc/init.d/percona
-RUN chmod +x /etc/init.d/percona
+ADD etc/percona.init.sh /etc/init.d/mysqld
+RUN chmod +x /etc/init.d/mysqld
 
 # Configure the database to use our data dir.
 RUN sed -i -e 's/^datadir\s*=.*/datadir = \/data/' /etc/my.cnf
