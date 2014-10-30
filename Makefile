@@ -26,7 +26,7 @@ DOCKER_RUN_COMMON=\
 all: build
 
 build:
-	docker build -t="$(DOCKER_USER)/centos-percona" .
+	docker build -t="$(DOCKER_USER)/centos-percona:centos7" .
 
 run: clean
 	mkdir -p $(DATA_DIR)
