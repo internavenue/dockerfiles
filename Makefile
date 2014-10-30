@@ -21,7 +21,7 @@ DOCKER_RUN_COMMON=\
 	-v $(RUN_DIR):/run \
 	-e USER="$(USER)" \
 	-e PASS="$(PASS)" \
-	$(DOCKER_USER)/centos-percona
+	$(DOCKER_USER)/centos-percona:centos7
 
 all: build
 
