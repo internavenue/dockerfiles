@@ -30,4 +30,4 @@ echo "Starting SSHd"
 service sshd start
 
 echo "Starting Percona MySQL..."
-exec /etc/init.d/percona start
+exec /etc/init.d/mysqld start
