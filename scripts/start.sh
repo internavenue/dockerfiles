@@ -33,4 +33,4 @@ echo "Starting SSHd..."
 /usr/sbin/sshd
 
 echo "Starting Percona MySQL..."
-exec /etc/init.d/percona start
+exec /etc/init.d/mysqld start
