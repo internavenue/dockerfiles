@@ -20,12 +20,12 @@ DOCKER_RUN_COMMON=\
 									-v $(RUN_DIR):/run \
 									-e USER="$(USER)" \
 									-e PASS="$(PASS)" \
-									$(DOCKER_USER)/centos-percona
+									$(DOCKER_USER)/centos-percona:centos6
 
 all: build
 
 build:
-	docker build -t="$(DOCKER_USER)/centos-percona" .
+	docker build -t="$(DOCKER_USER)/centos-percona:centos6" .
 
 run: clean
 	mkdir -p $(DATA_DIR)
