@@ -6,12 +6,20 @@ DOCKER_REPO_NAME=centos-nginx
 CONTAINER_NAME:=lon-dev-web1
 USER:=super
 PASS:=Whatz03v3r
-DATA_DIR:=/srv/docker/lon-dev-web
+DATA_DIR:=/srv/docker/lon-dev-web1/www
+LOG_DIR:=/srv/docker/lon-dev-web1/log
+RUN_DIR:=/srv/docker/lon-dev-web1/run
+VAGRANT_DIR:=/srv/docker/lon-dev-web1/vagrant
 PORT:=127.0.0.1:80
 
 RUNNING:=$(shell docker ps | grep $(CONTAINER_NAME) | cut -f 1 -d ' ')
 ALL:=$(shell docker ps -a | grep $(CONTAINER_NAME) | cut -f 1 -d ' ')
-DOCKER_RUN_COMMON=--name="$(CONTAINER_NAME)" -p $(PORT):80 -v $(DATA_DIR):/srv/www -e USER="$(USER)" -e PASS="$(PASS)" $(DOCKER_USER)/$(DOCKER_REPO_NAME)
+DOCKER_RUN_COMMON=--name="$(CONTAINER_NAME)" -p $(PORT):80 \
+	-v $(DATA_DIR):/srv/www \
+	-v $(LOG_DIR):/var/log \
+	-v $(RUN_DIR):/var/run \
+	-v $(VAGRANT_DIR):/vagrant \
+	-e USER="$(USER)" -e PASS="$(PASS)" $(DOCKER_USER)/$(DOCKER_REPO_NAME)
 
 all: build
 

@@ -1,4 +1,4 @@
-FROM internavenue/centos-base
+FROM internavenue/centos-base:centos6
 
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
@@ -39,11 +39,8 @@ EXPOSE 80 22
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 
-# Change the root password. The password should be changed and/or managed via Puppet.
-RUN sed -ri 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config && echo 'root:Ch4ng3M3' | chpasswd
-
 # Expose our web root and log directories log.
-VOLUME ["/srv/www", "/var/log"]
+VOLUME ["/vagrant", "/srv/www", "/var/log", "/var/run"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
