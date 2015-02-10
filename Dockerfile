@@ -35,9 +35,6 @@ ADD etc/fastcgi_params.conf /etc/nginx/conf/fastcgi_params.conf
 RUN mv /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.default
 ADD etc/www.conf /etc/php-fpm.d/www.conf
 
-ADD etc/default.conf /etc/nginx/sites-available/default.conf
-RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled
-
 # Add Composer
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && chmod +x /usr/local/bin/composer
 
@@ -46,6 +43,8 @@ RUN chmod +x /scripts/start.sh
 
 # Expose our web root and log directories log.
 VOLUME ["/srv/www", "/var/log", "/var/lib/php", "/run", "/vagrant"]
+
+EXPOSE 9000 22
 
 # Kicking in
 CMD ["/scripts/start.sh"]
