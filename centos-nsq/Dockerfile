@@ -21,7 +21,7 @@ RUN chmod +x /scripts/start.sh
 EXPOSE 4150 4151 4160 4161 4171 22
 
 # Expose our web root and log directories log.
-VOLUME ["/vagrant", "/data", "/var/log", "/var/run"]
+VOLUME ["/vagrant", "/data", "/var/log", "/run"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
