@@ -1,4 +1,4 @@
-FROM internavenue/centos-php
+FROM internavenue/centos-php:centos7
 
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
@@ -23,7 +23,7 @@ RUN chmod +x /scripts/start.sh
 RUN touch /first_run
 
 # Expose our web root and log directories log.
-VOLUME ["/srv/www/phabricator", "/srv/git", "/var/log"]
+VOLUME ["/srv/www/phabricator", "/srv/git", "/var/log", "/run", "/vagrant"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]

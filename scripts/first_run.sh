@@ -3,7 +3,7 @@ pre_start_action() {
   mkdir -p "$LOG_DIR/nginx"
 
   cd $DATA_DIR
-  
+
   if [ ! -d libphutil ]; then
     echo "Cloning libphutil..."
     git clone https://github.com/facebook/libphutil.git
