@@ -27,8 +27,10 @@ RUN yum -y install \
   sudo \
   syslog-ng \
   syslog-ng-libdbi \
-  wget \
   yum-plugin-fastestmirror 
+
+# Clean up YUM when done.
+RUN yum -í upgrade
 
 # Clean up YUM when done.
 RUN yum clean all
@@ -61,7 +63,7 @@ RUN sed -i 's/UsePrivilegeSeparation sandbox/UsePrivilegeSeparation no/' /etc/ss
 RUN echo 'root:Ch4ng3M3' | chpasswd
 
 # Expose our web root and log directories log.
-VOLUME ["/vagrant", "/var/log"]
+VOLUME ["/vagrant", "/var/log", "/run"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
