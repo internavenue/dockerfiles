@@ -23,7 +23,7 @@ RUN chmod +x /scripts/start.sh
 RUN touch /first_run
 
 # Expose our web root and log directories log.
-VOLUME ["/srv/www/phabricator", "/srv/git", "/var/log", "/run", "/vagrant"]
+VOLUME ["/srv/git", "/var/log", "/run", "/vagrant"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
