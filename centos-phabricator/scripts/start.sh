@@ -7,6 +7,15 @@ set -e
 DATA_DIR=/srv/www/phabricator
 LOG_DIR=/var/log
 
+SESSION_DIR=/var/lib/php/session
+LOG_DIR=/var/log/php-fpm
+WSDL_CACHE_DIR=/var/lib/php/wsdlcache
+LOCK_DIR=/var/run/lock/subsys
+
+# The main user for PHP-FPM.
+PHP_USER=apache
+PHP_GROUP=apache
+
 if [[ -e /first_run ]]; then
   source /scripts/first_run.sh
 else
@@ -16,11 +25,16 @@ fi
 pre_start_action
 post_start_action
 
-echo "Starting SSHd"
-service sshd start
+chown -R $PHP_USER:$PHP_GROUP $SESSION_DIR
+chown -R $PHP_USER:$PHP_GROUP $WSDL_CACHE_DIR
+chown -R $PHP_USER:$PHP_GROUP $LOG_DIR
+chown -R $PHP_USER:$PHP_GROUP $LOCK_DIR
 
-echo "Starting PHP-FPM..."
-service php-fpm start
+echo "Starting Syslog-ng..."
+syslog-ng --no-caps
 
-echo "Starting Nginx..."
-/usr/sbin/nginx
+echo "Starting SSHd..."
+/usr/sbin/sshd
+
+echo "Starting PHP..."
+exec /etc/init.d/php-fpm start
