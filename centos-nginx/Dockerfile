@@ -21,7 +21,7 @@ RUN rm -rf /etc/nginx
 # Unfortunately, because of a bug in hub.docker.com,
 # we can't use Git submodules here to drop modules in.
 RUN cd /tmp && \
-  wget -O server-configs-nginx.zip https://github.com/h5bp/server-configs-nginx/archive/master.zip && \
+  curl -L -o server-configs-nginx.zip https://github.com/h5bp/server-configs-nginx/archive/master.zip && \
   unzip server-configs-nginx.zip && \
   mv server-configs-nginx-master /etc/nginx
 
