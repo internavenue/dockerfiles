@@ -1,6 +1,6 @@
 # Substitute your own docker index username, if you like.
 DOCKER_USER=internavenue
-DOCKER_REPO_NAME=centos-haproxy
+DOCKER_REPO_NAME=centos-haproxy:centos7
 
 # Change this to suit your needs.
 CONTAINER_NAME:=lon-dev-haproxy
