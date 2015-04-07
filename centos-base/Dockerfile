@@ -27,10 +27,7 @@ RUN yum -y install \
   sudo \
   syslog-ng \
   syslog-ng-libdbi \
-  yum-plugin-fastestmirror 
-
-# Clean up YUM when done.
-RUN yum -í upgrade
+  yum-plugin-fastestmirror
 
 # Clean up YUM when done.
 RUN yum clean all
