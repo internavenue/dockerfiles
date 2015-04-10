@@ -21,7 +21,9 @@ RUN yum -y install --enablerepo=remi,remi-php56 \
   php-pear \
   php-pecl-imagick \
   php-soap \
-  php-xml
+  php-xml \
+  php56-php-pecl-apcu \
+  php56-php-opcache
 
 # Clean up YUM when done.
 RUN yum clean all
