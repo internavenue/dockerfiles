@@ -4,7 +4,11 @@ MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # Install git to download Phabricator.
 RUN \
-   yum -y install git && \
+   yum -y install \
+     git \
+     python-pygments \
+     ctags \
+   && \
    yum clean all
 
 # Download Phabricator bundle.
