@@ -9,22 +9,21 @@ RUN yum -y install \
   ftp://rpmfind.net/linux/centos/6.6/os/x86_64/Packages/OpenEXR-libs-1.6.1-8.1.el6.x86_64.rpm
 
 # Install PHP and Percona (MySQL) client stuff and the latest stable PHP.
-RUN yum -y install --enablerepo=remi-php56 \
+RUN yum -y install --enablerepo=remi,remi-php56 \
   Percona-Server-client-56 \
-  php-fpm \
   php-cli \
+  php-fpm \
   php-gd \
   php-mbstring \
   php-mcrypt \
   php-mysqlnd \
+  php-opcache \
   php-pdo \
   php-pear \
   php-soap \
   php-xml \
-  php-pecl-apcu \
-  php-pecl-memcached \
   php-pecl-imagick \
-  php-opcache
+  http://rpms.famillecollet.com/enterprise/6/php56/x86_64/php-pecl-apcu-4.0.7-1.el6.remi.5.6.x86_64.rpm
 
 # Clean up YUM when done.
 RUN yum clean all
