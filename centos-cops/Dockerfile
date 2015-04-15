@@ -9,11 +9,12 @@ RUN \
 # Explicit version installed, so we know we won't break anything.
 RUN \
   mkdir -p /srv/books && \
+  mkdir -p /srv/www/ && \
   curl -SL https://github.com/seblucas/cops/archive/1.0.0RC3.tar.gz | \
   tar -xzC /srv && \
-  mv /srv/cops-1.0.0RC3 /srv/cops
+  mv /srv/cops-1.0.0RC3 /srv/www/cops
 
-ADD etc/config_local.php /srv/cops/config_local.php
+ADD etc/config_local.php /srv/www/cops/config_local.php
 
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
