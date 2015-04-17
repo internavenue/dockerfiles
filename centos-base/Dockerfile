@@ -16,6 +16,7 @@ RUN yum -y upgrade
 RUN yum -y install \
   bash-completion \
   curl \
+  hostname \
   pwgen \
   mc \
   openssh-clients \
