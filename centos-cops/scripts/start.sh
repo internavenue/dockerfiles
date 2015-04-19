@@ -8,6 +8,7 @@ SESSION_DIR=/var/lib/php/session
 LOG_DIR=/var/log/php-fpm
 WSDL_CACHE_DIR=/var/lib/php/wsdlcache
 LOCK_DIR=/var/run/lock/subsys
+WWW_DIR=/srv/www
 
 # The main user for PHP-FPM.
 PHP_USER=apache

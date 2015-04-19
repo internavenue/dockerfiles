@@ -3,25 +3,24 @@ FROM internavenue/centos-php:centos7
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 RUN \
-  yum -y install tar php-sqlite && \
+  yum -y --enablerepo=remi,remi-php56 install \
+    git \
+    php-pecl-sqlite && \
   yum clean all
 
 # Explicit version installed, so we know we won't break anything.
 RUN \
   mkdir -p /srv/books && \
-  mkdir -p /srv/www/ && \
-  curl -SL https://github.com/seblucas/cops/archive/1.0.0RC3.tar.gz | \
-  tar -xzC /srv && \
-  mv /srv/cops-1.0.0RC3 /srv/www/cops
+  mkdir -p /srv/www/
 
-ADD etc/config_local.php /srv/www/cops/config_local.php
+ADD etc/config_local.php /srv/www/config_local.php
 
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 RUN touch /first_run
 
 # Expose our web root and log directories log.
-VOLUME ["/srv/books", "/var/log", "/run", "/vagrant"]
+VOLUME ["/srv/www/cops", "/srv/books", "/var/log", "/run", "/vagrant"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
