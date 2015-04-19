@@ -17,6 +17,7 @@ RUN yum -y install \
   bash-completion \
   curl \
   hostname \
+  initscripts \
   pwgen \
   mc \
   openssh-clients \
