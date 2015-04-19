@@ -1,5 +1,5 @@
 #!/bin/bash
-# Starts up the Phabricator stack within the container.
+# Starts up the Jenkins stack within the container.
 
 # Stop on error
 set -e
@@ -19,7 +19,11 @@ post_start_action
 chown jenkins:jenkins $DATA_DIR
 chown jenkins:jenkins "$LOG_DIR/jenkins"
 
-service sshd start
+echo "Starting Syslog-ng..."
+syslog-ng --no-caps
 
-echo "Starting Jenkins..."
-service jenkins start
+echo "Starting SSHd..."
+/usr/sbin/sshd
+
+echo "Starting Nginx..."
+/etc/init.d/jenkins.nodaemon start

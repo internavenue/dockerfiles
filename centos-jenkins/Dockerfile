@@ -1,29 +1,27 @@
-FROM internavenue/centos-base
+FROM internavenue/centos-base:centos7
 
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
-RUN wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
-RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+RUN curl -SL http://pkg.jenkins-ci.org/redhat/jenkins.repo -o /etc/yum.repos.d/jenkins.repo && \
+  rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 
 RUN yum -y install \
   java-1.7.0-openjdk \
-  jenkins
-
-# Clean up YUM when done.
-RUN yum clean all
+  jenkins && \
+  yum clean all
 
 ADD scripts /scripts
 RUN chmod +x /scripts/start.sh
 RUN touch /first_run
 
 # The --deaemon removed from the init file.
-ADD etc/jenkins /etc/init.d/jenkins
-RUN chmod +x /etc/init.d/jenkins
+ADD etc/jenkins /etc/init.d/jenkins.nodaemon
+RUN chmod +x /etc/init.d/jenkins.nodaemon
 
 EXPOSE 8080 22
 
 # Expose our web root and log directories log.
-VOLUME ["/var/lib/jenkins", "/var/log"]
+VOLUME ["/var/lib/jenkins", "/var/log", "/run", "/vagrant"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]
