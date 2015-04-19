@@ -35,3 +35,4 @@ echo "Starting SSHd..."
 
 echo "Starting PHP-FPM..."
 /etc/init.d/php-fpm start
+
