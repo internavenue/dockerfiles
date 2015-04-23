@@ -2,12 +2,12 @@ FROM internavenue/centos-base
 
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
-RUN curl -L -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+RUN curl -L -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
 RUN rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 
 RUN yum -y install \
   java-1.7.0-openjdk \
-  jenkins
+  jenkins git tar
 
 # Clean up YUM when done.
 RUN yum clean all
