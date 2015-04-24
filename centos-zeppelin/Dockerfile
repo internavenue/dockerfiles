@@ -19,13 +19,13 @@ RUN \
   mv apache-maven-3.3.1/ /opt/maven && \
   ln -s /opt/maven/bin/mvn /usr/bin/mvn 
 
-# Install zeppelin
+# Install Zeppelin
 RUN git clone  https://github.com/apache/incubator-zeppelin.git /zeppelin
 WORKDIR /zeppelin
-#RUN mvn install -DskipTests
+RUN mvn install -DskipTests
 
-# Expose ports and run
-EXPOSE 8080
-EXPOSE 8081
+VOLUME ["/vagrant", "/zeppelin/run", "/zeppelin/log", "/zeppelin/notebook"]
+
+EXPOSE 8080 8081
 
 CMD ["bin/zeppelin.sh", "start"]
