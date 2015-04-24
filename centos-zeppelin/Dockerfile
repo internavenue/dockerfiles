@@ -3,7 +3,7 @@ FROM internavenue/centos-base:centos7
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 RUN yum install -y \
-  bunzip2 \
+  bzip2 \
   git \
   java-1.8.0-openjdk \
   java-1.8.0-openjdk-devel \
@@ -22,7 +22,7 @@ RUN \
 # Install zeppelin
 RUN git clone  https://github.com/apache/incubator-zeppelin.git /zeppelin
 WORKDIR /zeppelin
-RUN mvn install -DskipTests
+#RUN mvn install -DskipTests
 
 # Expose ports and run
 EXPOSE 8080
