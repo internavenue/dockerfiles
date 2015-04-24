@@ -22,7 +22,7 @@ RUN \
 # Install Zeppelin
 RUN git clone  https://github.com/apache/incubator-zeppelin.git /zeppelin
 WORKDIR /zeppelin
-RUN mvn install -DskipTests
+RUN mvn install -DskipTests -Dspark.version=1.2.1
 
 VOLUME ["/vagrant", "/zeppelin/run", "/zeppelin/log", "/zeppelin/notebook"]
 
