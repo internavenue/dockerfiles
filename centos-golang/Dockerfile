@@ -11,8 +11,6 @@ ENV GOPATH /gopath
 RUN mkdir $GOROOT
 RUN mkdir $GOPATH
 
-VOLUME $GOPATH
-
 RUN curl https://storage.googleapis.com/golang/go$GOLANG_VERSION.linux-amd64.tar.gz | tar xvzf - -C $GOROOT --strip-components=1
 
 ENV PATH $PATH:$GOROOT/bin:$GOPATH/bin
