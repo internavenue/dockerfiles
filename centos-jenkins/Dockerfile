@@ -6,7 +6,11 @@ RUN curl -SL http://pkg.jenkins-ci.org/redhat/jenkins.repo -o /etc/yum.repos.d/j
   rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
 
 RUN yum -y install \
-  java-1.7.0-openjdk \
+  bzip2 \
+  java-1.8.0-openjdk \
+  git \
+  initscripts \
+  tar \
   jenkins && \
   yum clean all
 
