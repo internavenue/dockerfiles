@@ -4,24 +4,22 @@ MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 RUN yum -y install tar
 
+ADD https://github.com/bitly/nsq/releases/download/v0.3.5/nsq-0.3.5.linux-amd64.go1.4.2.tar.gz /var/tmp/
 RUN \
-  mkdir -p /tmp/nsq && \
-  wget https://s3.amazonaws.com/bitly-downloads/nsq/nsq-0.3.2.linux-amd64.go1.4.1.tar.gz -O - | tar -xvz --strip=1 -C /tmp/nsq && \
-  mv /tmp/nsq/bin/* /usr/local/bin/ && \
-  rm -rf /tmp/nsq
+  mkdir -p /var/tmp/nsq && \
+  tar -xzf /var/tmp/nsq-0.3.5.linux-amd64.go1.4.2.tar.gz --strip=1 -C /var/tmp/nsq/ && \
+  mv /var/tmp/nsq/bin/* /usr/local/sbin && \
+  rm -rf /var/tmp/nsq*
 
-# We don't tar anymore.
-RUN yum remove -y tar && \
-  yum clean all
+RUN yum -y remove tar && yum clean all
 
-ADD scripts /scripts
+COPY scripts /scripts
 RUN chmod +x /scripts/start.sh
 
 # Expose ports.
 EXPOSE 4150 4151 4160 4161 4171 22
 
-# Expose our web root and log directories log.
-VOLUME ["/vagrant", "/data", "/var/log", "/run"]
+VOLUME ["/vagrant", "/data", "/var/log", "/run", "/etc/ssl/certs"]
 
 # Kicking in
 CMD ["/scripts/start.sh"]

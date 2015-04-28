@@ -18,8 +18,6 @@ else
   source /scripts/normal_run.sh
 fi
 
-chown -R nginx:nginx "$LOG_DIR/nsq"
-
 echo "Starting Syslog-ng..."
 syslog-ng --no-caps
 
