@@ -6,11 +6,10 @@ RUN useradd --create-home -G wheel -s/bin/bash vagrant
 WORKDIR /home/vagrant
 
 # Install EPEL repo.
-RUN yum -y install http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-# Install Puppet repo.
-RUN yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
-
-RUN yum -y upgrade
+RUN \
+  yum -y install http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm && \
+  yum -y install https://yum.puppetlabs.com/el/7/PC1/x86_64/puppetlabs-release-pc1-0.9.2-1.el7.noarch.rpm && \
+  yum -y upgrade
 
 # Install base stuff.
 RUN yum -y install \
@@ -18,14 +17,11 @@ RUN yum -y install \
   curl \
   hostname \
   initscripts \
-  pwgen \
-  mc \
   openssh-clients \
   openssh-server \
-  puppet \
+  puppet-agent \
   vim-enhanced \
   tmux \
-  screen \
   sudo \
   syslog-ng \
   syslog-ng-libdbi \
