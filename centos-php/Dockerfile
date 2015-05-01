@@ -4,9 +4,8 @@ MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # Install Remi Collet's repo for CentOS 7
 RUN yum -y install \
-  http://rpms.famillecollet.com/enterprise/remi-release-6.rpm \
-  http://www.percona.com/downloads/percona-release/percona-release-0.0-1.x86_64.rpm \
-  ftp://rpmfind.net/linux/centos/6.6/os/x86_64/Packages/OpenEXR-libs-1.6.1-8.1.el6.x86_64.rpm
+  http://rpms.famillecollet.com/enterprise/remi-release-7.rpm \
+  http://www.percona.com/downloads/percona-release/percona-release-0.0-1.x86_64.rpm
 
 # Install PHP and Percona (MySQL) client stuff and the latest stable PHP.
 RUN yum -y install --enablerepo=remi,remi-php56 \
@@ -23,7 +22,7 @@ RUN yum -y install --enablerepo=remi,remi-php56 \
   php-soap \
   php-xml \
   php-pecl-imagick \
-  http://rpms.famillecollet.com/enterprise/6/php56/x86_64/php-pecl-apcu-4.0.7-1.el6.remi.5.6.x86_64.rpm
+  php-pecl-apcu
 
 # Clean up YUM when done.
 RUN yum clean all
