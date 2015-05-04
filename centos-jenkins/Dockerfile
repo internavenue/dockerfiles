@@ -8,6 +8,7 @@ RUN curl -SL http://pkg.jenkins-ci.org/redhat/jenkins.repo -o /etc/yum.repos.d/j
 RUN yum -y install \
   bzip2 \
   java-1.8.0-openjdk \
+  java-1.8.0-openjdk-devel \
   git \
   initscripts \
   tar \
