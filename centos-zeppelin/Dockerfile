@@ -28,4 +28,4 @@ VOLUME ["/vagrant", "/zeppelin/run", "/zeppelin/log", "/zeppelin/notebook"]
 
 EXPOSE 8080 8081
 
-CMD ["bin/zeppelin.sh", "start"]
+CMD ["bin/zeppelin-daemon.sh", "start"]
