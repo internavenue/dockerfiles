@@ -14,7 +14,7 @@ This example creates the image with the tag `internavenue/centos-zeppelin`, but 
 $ docker build -t="internavenue/centos-zeppelin" .
 ```
 
-Alternately, you can run the following if you have *GNU Make* installed...
+Alternately, you can run the following if you have *GNU Make* installed and if you'd like to build Zeppelin with an external Spark pre-built or custom build. By default, the Makefile choses an external pre-built Spark package.
 
 ```
 $ make
