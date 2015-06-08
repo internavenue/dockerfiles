@@ -29,6 +29,7 @@ $ make DOCKER_USER=internavenue
 
 ## Usage
 
+### Standalone single-node use
 ```
 sudo docker run -t -i -p internavenue/centos-spark:centos7
 ```
@@ -41,6 +42,22 @@ You can run a test (estimate Pi number) with the following command within the co
 /opt/spark/bin/run-example SparkPi 10
 ```
 
-##To-Do
+### Standalone cluster mode
 
-Map ports, build from source? ...
+* Spin-up the master container
+
+```
+sudo sh start-master.sh
+```
+
+* Spin-up workers:
+
+```
+sudo sh start-worker.sh
+```
+
+* To launch a Spark shell against the master:
+
+```
+sudo sh spark-shell.sh
+```
