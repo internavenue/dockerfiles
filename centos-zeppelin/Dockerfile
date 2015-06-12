@@ -3,8 +3,8 @@ FROM internavenue/centos-base:centos7
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # SPARK 
-ENV SPARK_PROFILE 1.3
-ENV SPARK_VERSION 1.3.1
+ENV SPARK_PROFILE 1.4
+ENV SPARK_VERSION 1.4.0
 ENV HADOOP_PROFILE 2.4
 ENV HADOOP_VERSION 2.4.0
 
