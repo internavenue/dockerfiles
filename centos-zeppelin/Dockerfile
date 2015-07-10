@@ -17,6 +17,7 @@ RUN yum install -y \
   npm \
   tar \
   unzip \
+  R \
   && \
   yum clean all
 
