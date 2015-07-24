@@ -9,6 +9,7 @@ RUN yum install -y \
   git \
   tar \
   unzip \
+  wget \
   java-1.8.0-openjdk \
   java-1.8.0-openjdk-devel \
   npm && \
@@ -30,4 +31,4 @@ RUN yum install -y sbt
 #Install NLP4L
 RUN git clone https://github.com/NLP4L/nlp4l /nlp4l
 WORKDIR /nlp4l
-run sbt pack
+RUN sbt pack
