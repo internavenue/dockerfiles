@@ -25,3 +25,8 @@ Once inside, you can run NLP4l with
 ```
 target/pack/bin/nlp4l
 ```
+By default, NLP4L code for generating the Lucene indices of different corpora is /tmp, therefore you should map this directory to somewhere in the host. If you also want to map downloaded corpora in the host to the default location within the NLP4L working directory then you should:
+
+```
+sudo docker run -v ~/nlp/corpora:/nlp4l/corpora -v ~/nlp/indices:/tmp -ti internavenue/centos-nlp4l bash
+```
