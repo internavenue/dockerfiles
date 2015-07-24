@@ -15,6 +15,14 @@ RUN yum install -y \
   npm && \
   yum clean all
 
+#Install Maven (needed for converting Wikipedia data into Lucene index)
+
+RUN \
+  curl http://mirrors.ukfast.co.uk/sites/ftp.apache.org/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip -o apache-maven-3.3.1-bin.zip && \
+    unzip apache-maven-3.3.1-bin.zip && \
+      mv apache-maven-3.3.1/ /opt/maven && \
+        ln -s /opt/maven/bin/mvn /usr/bin/mvn
+
 #Install Scala
 RUN \
   curl $SCALA_URL/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | tar xvz
