@@ -3,10 +3,10 @@ FROM internavenue/centos-base:centos7
 MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # SPARK 
-ENV SPARK_PROFILE 1.4
-ENV SPARK_VERSION 1.4.0
-ENV HADOOP_PROFILE 2.4
-ENV HADOOP_VERSION 2.4.0
+ENV SPARK_PROFILE 1.5
+ENV SPARK_VERSION 1.5.1
+ENV HADOOP_PROFILE 2.6
+ENV HADOOP_VERSION 2.6.0
 
 RUN yum install -y \
   bzip2 \
@@ -30,9 +30,9 @@ RUN curl -sL --retry 3 \
   && rm /usr/spark/lib/spark-examples*.jar
 
 RUN \
-  curl http://mirrors.ukfast.co.uk/sites/ftp.apache.org/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip -o apache-maven-3.3.1-bin.zip && \
-  unzip apache-maven-3.3.1-bin.zip && \
-  mv apache-maven-3.3.1/ /opt/maven && \
+  curl http://mirrors.ukfast.co.uk/sites/ftp.apache.org/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.zip -o apache-maven-3.3.3-bin.zip && \
+  unzip apache-maven-3.3.3-bin.zip && \
+  mv apache-maven-3.3.3/ /opt/maven && \
   ln -s /opt/maven/bin/mvn /usr/bin/mvn
 
 # Install Zeppelin
