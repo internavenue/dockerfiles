@@ -10,6 +10,8 @@ RUN yum install -y \
   java-1.8.0-openjdk \
   java-1.8.0-openjdk-devel \
   python-setuptools python-dev python-numpy \
+  install mysql-connector-python \
+  easy_install predictionio \
   tar \
   unzip \
   && \
@@ -26,5 +28,8 @@ RUN yum install -y \
 #RUN curl https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.tar.gz | tar xvz
 
 #RUN curl http://archive.apache.org/dist/hbase/hbase-1.0.0/hbase-1.0.0-bin.tar.gz | tar xvz
+
+RUN echo "export PATH=$PATH:/vagrant/PredictionIO/bin" >> ~/.bashrc
+RUN source ~/.bashrc
 
 WORKDIR /vagrant
