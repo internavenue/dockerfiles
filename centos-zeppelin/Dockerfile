@@ -4,7 +4,7 @@ MAINTAINER Intern Avenue Dev Team <dev@internavenue.com>
 
 # SPARK 
 ENV SPARK_PROFILE 1.6
-ENV SPARK_VERSION 1.6.0
+ENV SPARK_VERSION 1.6.1
 ENV HADOOP_PROFILE 2.6
 ENV HADOOP_VERSION 2.6.0
 
@@ -38,13 +38,13 @@ RUN \
 # Install Zeppelin
 RUN git clone  https://github.com/apache/incubator-zeppelin.git /zeppelin
 WORKDIR /zeppelin
-RUN mvn clean package -DskipTests -Pspark-$SPARK_PROFILE -Dspark.version=$SPARK_VERSION
+RUN mvn -T "$(nproc)" clean package -DskipTests -Pspark-$SPARK_PROFILE -Dspark.version=$SPARK_VERSION
 
 
 # Py4j for PySpark
 RUN easy_install py4j
 
-CMD ["bin/zeppelin-daemon.sh", "start"]
+CMD ["bin/zeppelin-daemon.sh", "upstart"]
 
 VOLUME ["/vagrant", "/zeppelin/run", "/zeppelin/log", "/zeppelin/notebook"]
 
