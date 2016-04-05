@@ -26,8 +26,12 @@ RUN \
 RUN easy_install py4j
 
 
-VOLUME ["/vagrant", "/zeppelin", "/zeppelin/run", "/zeppelin/log", "/zeppelin/notebook"]
+ADD scripts /scripts
+RUN chmod +x /scripts/build.sh
+RUN chmod +x /scripts/start.sh
+
+VOLUME ["/vagrant", "/zeppelin"]
 
 EXPOSE 8080 8081
 
-CMD ["scripts/setup.sh"]
+CMD ["/scripts/start.sh"]
