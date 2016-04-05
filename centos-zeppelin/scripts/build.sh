@@ -8,7 +8,5 @@ HADOOP_VERSION=2.6.0
 
 # Setup and run Zeppelin
 cd /zeppelin
-mvn -T "$(nproc)" clean package -DskipTests -Pspark-$SPARK_PROFILE -Dspark.version=$SPARK_VERSION
+mvn -T "$(nproc)" clean package -DskipTests -Pspark-$SPARK_PROFILE -Dspark.version=$SPARK_VERSION -Phadoop-$HADOOP_PROFILE -Pyarn -Ppyspark
 
-# Start Zeppelin
-bin/zeppelin-daemon.sh start
